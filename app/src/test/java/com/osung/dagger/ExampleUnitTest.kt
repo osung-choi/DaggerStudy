@@ -1,5 +1,7 @@
 package com.osung.dagger
 
+import android.util.Log
+import com.osung.dagger.first.DaggerMyComponent
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -12,6 +14,8 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val myComponent = DaggerMyComponent.create()
+
+        assertEquals(myComponent.getString(), "Hello World")
     }
 }
