@@ -1,7 +1,8 @@
 package com.osung.dagger
 
-import android.util.Log
 import com.osung.dagger.first.DaggerMyComponent
+import com.osung.dagger.module.DaggerManComponent
+import com.osung.dagger.module.DaggerPersonComponent
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -17,5 +18,19 @@ class ExampleUnitTest {
         val myComponent = DaggerMyComponent.create()
 
         assertEquals(myComponent.getString(), "Hello World")
+    }
+
+    @Test
+    fun secondModuleTest() {
+        val secondModule = DaggerPersonComponent.create()
+
+        assertEquals(secondModule.getPerson().name, "Charles")
+        assertEquals(secondModule.getPerson().age, 100)
+    }
+
+    @Test
+    fun extendModuleTest() {
+        val extendModule = DaggerManComponent.create()
+        extendModule.isMan()
     }
 }
